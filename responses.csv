@@ -1,7 +1,20 @@
-hola, Hola; ¿cómo estás?
-bien, Me alegra escuchar eso.
-mal, Lo siento mucho; ¿puedo hacer algo para ayudarte?
-nombre, Soy un chatbot; ¿y tú?
-edad, No tengo edad; soy un programa de ordenador.
-clima, Actualmente está soleado y con una temperatura de 25 grados Celsius.
-hora, Son las {hora} y {minutos} minutos.
+Pregunta,Respuesta
+hola,Hola como estas?
+buenos dias,Buenos días como puedo ayudarte?
+buenas tardes,Buenas tardes en que puedo ayudarte hoy?
+buenas noches,Buenas noches en qué puedo ayudarte hoy?
+como estas?,Estoy bien gracias por preguntar. ¿Y tú?
+que tal?,Estoy bien gracias por preguntar. ¿Y tú?
+cómo te llamas?,Soy un chatbot; ¿y tú?
+nombre,Soy un chatbot; ¿y tú?
+edad,No tengo edad; soy un programa de ordenador.
+que puedes hacer?,Puedo responder preguntas sobre clima hora noticias entre otros temas. En qué puedo ayudarte hoy?
+clima,Actualmente está soleado y con una temperatura de 25 grados Celsius.
+clima hoy,La previsión para hoy indica una temperatura de {temperatura_hoy} grados Celsius y un {clima_hoy}.
+clima mañana,La previsión para mañana indica una temperatura de {temperatura_manana} grados Celsius y un {clima_manana}.
+hora,Son las {hora} y {minutos} minutos.
+fecha,La fecha de hoy es {fecha}.
+noticias,Sí claro. Sobre qué tema te gustaría recibir noticias?
+deportes,En deportes el equipo local ganó el partido de ayer con un marcador de 3-1.
+economía,En economía la bolsa subió un 1% hoy.
+política,En política el presidente anunció un nuevo programa social para las personas mayores.
