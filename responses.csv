@@ -1,10 +1,7 @@
-Input,Response
-hola,¡Hola! ¿En qué puedo ayudarte?
-¿cómo estás?,Estoy bien, gracias.
-¿qué tiempo hace hoy?,No lo sé, ¿de qué ciudad me estás hablando?
-ciudad de méxico,En la Ciudad de México hace calor y hay sol.
-guadalajara,En Guadalajara hace fresco y está nublado.
-monterrey,En Monterrey hace mucho calor y está despejado.
-¿cómo te llamas?,Me llamo ChatBot.
-¿qué edad tienes?,No tengo edad, soy un programa de computadora.
-adiós,¡Hasta luego!
+hola, Hola; ¿cómo estás?
+bien, Me alegra escuchar eso.
+mal, Lo siento mucho; ¿puedo hacer algo para ayudarte?
+nombre, Soy un chatbot; ¿y tú?
+edad, No tengo edad; soy un programa de ordenador.
+clima, Actualmente está soleado y con una temperatura de 25 grados Celsius.
+hora, Son las {hora} y {minutos} minutos.

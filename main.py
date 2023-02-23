@@ -1,70 +1,59 @@
+import tkinter as tk
+import csv
+import random
 import nltk
-import numpy as np
-import pandas as pd
-from nltk.stem import WordNetLemmatizer
-from nltk import word_tokenize, pos_tag
+from nltk.tokenize import word_tokenize
 
-nltk.download('punkt')
-nltk.download('wordnet')
-nltk.download('averaged_perceptron_tagger')
+# cargar respuestas del archivo csv
+responses = {}
+with open('responses.csv') as csvfile:
+    reader = csv.reader(csvfile)
+    for row in reader:
+        key, val = row
+        responses[key] = val
 
-class ChatBot:
-    def __init__(self):
-        self.responses_df = pd.read_csv('responses.csv')
-        self.responses_dict = self.responses_df.set_index('Input')['Response'].to_dict()
+# funciones auxiliares
+def respond(input_text):
+    """Función que devuelve una respuesta a partir del texto de entrada."""
+    input_text = input_text.lower()
+    tokens = word_tokenize(input_text)
+    for token in tokens:
+        if token in responses:
+            return responses[token]
+    return "Lo siento, no entiendo lo que estás diciendo."
 
-    def generate_response(self, input_text):
-        # Procesar la entrada del usuario
-        processed_input = self.process_input(input_text)
+def send_message(event=None):
+    """Función que maneja el envío de mensajes."""
+    # obtener texto de entrada
+    input_text = input_field.get()
+    input_field.delete(0, tk.END)
 
-        # Buscar una respuesta en el diccionario de respuestas
-        response = self.responses_dict.get(processed_input)
+    # mostrar mensaje de entrada en la ventana de chat
+    chat_log.config(state=tk.NORMAL)
+    chat_log.insert(tk.END, "Tú: " + input_text + "\n\n")
 
-        # Si no hay una respuesta, devolver una respuesta predeterminada
-        if not response:
-            response = "Lo siento, no entendí lo que dijiste. ¿Podrías ser más específico?"
+    # obtener respuesta y mostrarla en la ventana de chat
+    response = respond(input_text)
+    chat_log.insert(tk.END, "Chatbot: " + response + "\n\n")
+    chat_log.config(state=tk.DISABLED)
+    chat_log.yview(tk.END)
 
-        return response
+# crear ventana de chat
+root = tk.Tk()
+root.title("Chatbot")
 
-    def add_response(self, input_text, response):
-        # Agregar una respuesta a la base de datos de respuestas
-        self.responses_df = self.responses_df.append({'Input': input_text, 'Response': response}, ignore_index=True)
-        self.responses_dict = self.responses_df.set_index('Input')['Response'].to_dict()
-        self.responses_df.to_csv('responses.csv', index=False)
+# crear cuadro de chat
+chat_log = tk.Text(root, height=20, width=50, state=tk.DISABLED)
+chat_log.grid(row=0, column=0, padx=10, pady=10, sticky="w")
 
-    def process_input(self, input_text):
-        lemmatizer = WordNetLemmatizer()
+# crear campo de entrada
+input_field = tk.Entry(root, width=50)
+input_field.bind("<Return>", send_message)
+input_field.grid(row=1, column=0, padx=10, pady=10, sticky="w")
 
-        # Tokenize la entrada del usuario
-        tokens = word_tokenize(input_text.lower())
+# crear botón de envío
+send_button = tk.Button(root, text="Enviar", command=send_message)
+send_button.grid(row=1, column=1, padx=10, pady=10, sticky="e")
 
-        # Lemmatize los tokens
-        lemmatized_tokens = [lemmatizer.lemmatize(token) for token in tokens]
-
-        # Etiqueta de las partes del discurso de los tokens
-        pos_tokens = pos_tag(lemmatized_tokens)
-
-        # Cree una lista de tuplas (palabra, POS) para cada palabra en la entrada del usuario
-        processed_input = [(word, pos) for word, pos in pos_tokens]
-
-        return processed_input
-
-
-def run_chatbot():
-    chatbot = ChatBot()
-
-    print('Hola, soy un chatbot. ¿En qué puedo ayudarte?')
-
-    while True:
-        user_input = input('Tú: ')
-        
-        if user_input.lower() == 'salir':
-            print('Chatbot: ¡Hasta luego!')
-            break
-        
-        response = chatbot.generate_response(user_input)
-        print('Chatbot:', response)
-
-
-if __name__ == '__main__':
-    run_chatbot()
+# iniciar aplicación
+root.mainloop()
