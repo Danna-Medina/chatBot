@@ -5,21 +5,17 @@ import nltk
 import time
 from nltk.tokenize import word_tokenize
 
-# cargar respuestas del archivo csv
 responses = {}
 
 def get_response(user_input):
-    # Obtener la hora actual
     hora_actual = time.strftime('%H')
     minutos_actuales = time.strftime('%M')
 
-    # Obtener información del clima
-    # Aquí se debería usar una API real para obtener la información del clima
-    clima = "soleado"
+    clima = "soleado" #ESTATICO
 
     with open('responses.csv', 'r', encoding='utf-8') as file:
         reader = csv.reader(file)
-        next(reader) # Se salta la primera fila que contiene los encabezados
+        next(reader)
         responses = {rows[0]: rows[1] for rows in reader}
 
     for question, answer in responses.items():
@@ -32,7 +28,6 @@ def get_response(user_input):
 
     return "Lo siento, no te entendí. ¿Podrías repetirlo de otra manera?"
 
-# funciones auxiliares
 def respond(input_text):
     """Función que devuelve una respuesta a partir del texto de entrada."""
     response = get_response(input_text)
@@ -43,15 +38,13 @@ def respond(input_text):
 
 def send_message(event=None):
     """Función que maneja el envío de mensajes."""
-    # obtener texto de entrada
+
     input_text = input_field.get()
     input_field.delete(0, tk.END)
 
-    # mostrar mensaje de entrada en la ventana de chat
     chat_log.config(state=tk.NORMAL)
     chat_log.insert(tk.END, "Tú: " + input_text + "\n\n")
 
-    # obtener respuesta y mostrarla en la ventana de chat
     response = respond(input_text)
     if '{clima}' in response:
         clima_actual = random.choice(['soleado', 'lluvioso', 'nublado', 'nevado'])
@@ -60,12 +53,10 @@ def send_message(event=None):
     chat_log.config(state=tk.DISABLED)
     chat_log.yview(tk.END)
 
-# Crear ventana de chat
 root = tk.Tk()
 root.configure(bg="#E6E6E6")
 root.title("Friendchat")
 
-# Crear cuadro de chat
 chat_frame = tk.LabelFrame(root, text=" Chat ", font=("Arial", 12))
 chat_frame.grid(row=0, column=0, padx=10, pady=10, sticky="nsew")
 
@@ -77,7 +68,7 @@ scrollbar.grid(row=0, column=1, padx=5, pady=5, sticky="nse")
 
 chat_log.config(yscrollcommand=scrollbar.set)
 
-# Crear campo de entrada
+
 input_frame = tk.LabelFrame(root, text=" Escribir mensaje ", font=("Arial", 12))
 input_frame.grid(row=1, column=0, padx=10, pady=10, sticky="nsew")
 
@@ -85,7 +76,6 @@ input_field = tk.Entry(input_frame, width=50, font=("Arial", 12))
 input_field.bind("<Return>", send_message)
 input_field.pack(padx=10, pady=10, ipady=5, fill=tk.X, expand=True)
 
-# Crear botón de envío
 send_button = tk.Button(input_frame, text="Enviar", command=send_message, font=("Arial", 12))
 send_button.pack(padx=10, pady=10, ipadx=10, ipady=5)
 
