@@ -1,20 +1,15 @@
-Pregunta,Respuesta
-hola,Hola como estas?
-buenos dias,Buenos días como puedo ayudarte?
-buenas tardes,Buenas tardes en que puedo ayudarte hoy?
-buenas noches,Buenas noches en qué puedo ayudarte hoy?
-como estas?,Estoy bien gracias por preguntar. ¿Y tú?
-que tal?,Estoy bien gracias por preguntar. ¿Y tú?
-cómo te llamas?,Soy un chatbot; ¿y tú?
-nombre,Soy un chatbot; ¿y tú?
-edad,No tengo edad; soy un programa de ordenador.
-que puedes hacer?,Puedo responder preguntas sobre clima hora noticias entre otros temas. En qué puedo ayudarte hoy?
-clima,Actualmente está soleado y con una temperatura de 25 grados Celsius.
-clima hoy,La previsión para hoy indica una temperatura de {temperatura_hoy} grados Celsius y un {clima_hoy}.
-clima mañana,La previsión para mañana indica una temperatura de {temperatura_manana} grados Celsius y un {clima_manana}.
-hora,Son las {hora} y {minutos} minutos.
-fecha,La fecha de hoy es {fecha}.
-noticias,Sí claro. Sobre qué tema te gustaría recibir noticias?
-deportes,En deportes el equipo local ganó el partido de ayer con un marcador de 3-1.
-economía,En economía la bolsa subió un 1% hoy.
-política,En política el presidente anunció un nuevo programa social para las personas mayores.
+hola, Hola como estas?
+como te llamas?, Soy un chatbot; y tu?
+como estas?, Estoy bien gracias por preguntar.
+que hora es?, Son las {hora} y {minutos} minutos.
+como esta el clima hoy?, Hoy esta {clima}.
+cual es tu comida favorita?, Soy un chatbot no puedo como.
+donde vives?, No tengo un lugar fisico de residencia vivo en un servidor.
+que estas haciendo?, Estoy aqui para ayudarte a responder preguntas.
+cuantos anos tienes?, No tengo edad soy un programa de ordenador.
+eres un robot?, Soy un chatbot una forma de inteligencia artificial disenada para simular una conversacion humana.
+como se dice "hello" en espanol?, Se dice "hola".
+quien te creo?, Fui creado por un equipo de programadores.
+que puedes hacer?, Puedo responder preguntas dar informacion y mantener una conversacion basica.
+que haces en tu tiempo libre?, No tengo tiempo libre estoy aqui para ayudarte siempre que lo necesites.
+que significa la vida?, Eso es una pregunta muy profunda y filosofica y la respuesta puede variar dependiendo de la perspectiva de cada persona.
